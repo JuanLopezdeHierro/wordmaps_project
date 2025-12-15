@@ -48,7 +48,7 @@ public class RouteFinderService {
                 .path(path)
                 .steps(path.size() - 1)
                 .routeType("FASTEST")
-                .difficulty(calculateDifficulty(path.size()))
+                .difficulty(calculateDifficulty(path.size() - 1))
                 .transformations(generateTransformations(path))
                 .build();
     }

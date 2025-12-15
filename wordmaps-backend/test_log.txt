@@ -1,0 +1,134 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.wordmaps:wordmaps-backend >--------------------
+[INFO] Building wordmaps-backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ wordmaps-backend ---
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ wordmaps-backend ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ wordmaps-backend ---
+[INFO] skip non existing resourceDirectory D:\TSCD\proyectoTSCD\wordmaps-backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ wordmaps-backend ---
+[INFO] Changes detected - recompiling the module! :input tree
+[INFO] Compiling 3 source files with javac [debug release 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ wordmaps-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.1.2/surefire-junit-platform-3.1.2.pom
+Progress (1): 841 BProgress (1): 2.8 kBProgress (1): 4.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.1.2/surefire-junit-platform-3.1.2.pom (4.7 kB at 9.7 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.1.2/surefire-providers-3.1.2.pom
+Progress (1): 855 BProgress (1): 2.2 kBProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.1.2/surefire-providers-3.1.2.pom (2.6 kB at 25 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.1.2/common-java5-3.1.2.pom
+Progress (1): 841 BProgress (1): 2.0 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.1.2/common-java5-3.1.2.pom (2.8 kB at 34 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.pom
+Progress (1): 961 BProgress (1): 2.5 kBProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.pom (3.0 kB at 34 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.pom
+Progress (1): 953 BProgress (1): 2.5 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.pom (3.2 kB at 34 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom
+Progress (1): 1.2 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom (1.7 kB at 24 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.pom
+Progress (1): 973 BProgress (1): 2.5 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.pom (2.8 kB at 31 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.1.2/surefire-junit-platform-3.1.2.jar
+Progress (1): 0.9/27 kBProgress (1): 2.3/27 kBProgress (1): 3.6/27 kBProgress (1): 5.0/27 kBProgress (1): 6.4/27 kBProgress (1): 7.7/27 kBProgress (1): 8.2/27 kBProgress (1): 9.6/27 kBProgress (1): 11/27 kB Progress (1): 12/27 kBProgress (1): 14/27 kBProgress (1): 15/27 kBProgress (1): 16/27 kBProgress (1): 18/27 kBProgress (1): 19/27 kBProgress (1): 21/27 kBProgress (1): 22/27 kBProgress (1): 23/27 kBProgress (1): 25/27 kBProgress (1): 27 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.1.2/surefire-junit-platform-3.1.2.jar (27 kB at 169 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.1.2/common-java5-3.1.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar
+Progress (1): 3.8/169 kBProgress (1): 8.0/169 kBProgress (1): 12/169 kB Progress (1): 16/169 kBProgress (1): 20/169 kBProgress (1): 25/169 kBProgress (1): 29/169 kBProgress (1): 33/169 kBProgress (1): 37/169 kBProgress (1): 42/169 kBProgress (1): 46/169 kBProgress (1): 50/169 kBProgress (1): 53/169 kBProgress (1): 57/169 kBProgress (1): 62/169 kBProgress (1): 66/169 kBProgress (1): 70/169 kBProgress (1): 74/169 kBProgress (1): 79/169 kBProgress (1): 83/169 kBProgress (1): 87/169 kBProgress (1): 91/169 kBProgress (1): 95/169 kBProgress (1): 100/169 kBProgress (1): 104/169 kBProgress (1): 108/169 kBProgress (1): 112/169 kBProgress (1): 117/169 kBProgress (1): 121/169 kBProgress (1): 125/169 kBProgress (1): 129/169 kBProgress (1): 134/169 kBProgress (1): 138/169 kBProgress (1): 142/169 kBProgress (1): 146/169 kBProgress (1): 150/169 kBProgress (1): 155/169 kBProgress (1): 159/169 kBProgress (1): 163/169 kBProgress (1): 169 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar (169 kB at 1.2 MB/s)
+Progress (1): 0.9/18 kBProgress (1): 2.3/18 kBProgress (1): 3.6/18 kBProgress (1): 5.0/18 kBProgress (1): 6.4/18 kBProgress (1): 7.7/18 kBProgress (1): 9.1/18 kBProgress (1): 10/18 kB Progress (1): 12/18 kBProgress (1): 13/18 kBProgress (1): 15/18 kBProgress (1): 16/18 kBProgress (1): 17/18 kBProgress (1): 18 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.1.2/common-java5-3.1.2.jar (18 kB at 115 kB/s)
+Progress (1): 0.9/189 kBProgress (1): 2.3/189 kBProgress (1): 3.6/189 kBProgress (1): 5.0/189 kBProgress (1): 6.4/189 kBProgress (1): 7.7/189 kBProgress (1): 9.1/189 kBProgress (1): 10/189 kB Progress (1): 12/189 kBProgress (2): 12/189 kB | 0.9/103 kBProgress (2): 13/189 kB | 0.9/103 kBProgress (2): 15/189 kB | 0.9/103 kBProgress (2): 15/189 kB | 2.3/103 kBProgress (2): 16/189 kB | 2.3/103 kBProgress (2): 16/189 kB | 3.6/103 kBProgress (2): 16/189 kB | 5.0/103 kBProgress (2): 16/189 kB | 6.4/103 kBProgress (2): 17/189 kB | 6.4/103 kBProgress (2): 17/189 kB | 7.7/103 kBProgress (2): 17/189 kB | 9.1/103 kBProgress (2): 17/189 kB | 10/103 kB Progress (2): 19/189 kB | 10/103 kBProgress (2): 19/189 kB | 11/103 kBProgress (2): 19/189 kB | 13/103 kBProgress (2): 20/189 kB | 13/103 kBProgress (2): 20/189 kB | 14/103 kBProgress (2): 20/189 kB | 16/103 kBProgress (2): 21/189 kB | 16/103 kBProgress (2): 21/189 kB | 17/103 kBProgress (2): 23/189 kB | 17/103 kBProgress (2): 23/189 kB | 18/103 kBProgress (2): 23/189 kB | 20/103 kBProgress (2): 23/189 kB | 21/103 kBProgress (2): 23/189 kB | 22/103 kBProgress (2): 24/189 kB | 22/103 kBProgress (2): 26/189 kB | 22/103 kBProgress (2): 26/189 kB | 24/103 kBProgress (2): 27/189 kB | 24/103 kBProgress (2): 27/189 kB | 25/103 kBProgress (2): 28/189 kB | 25/103 kBProgress (2): 28/189 kB | 26/103 kBProgress (2): 30/189 kB | 26/103 kBProgress (2): 31/189 kB | 26/103 kBProgress (2): 31/189 kB | 28/103 kBProgress (2): 32/189 kB | 28/103 kBProgress (2): 32/189 kB | 29/103 kBProgress (2): 32/189 kB | 31/103 kBProgress (2): 34/189 kB | 31/103 kBProgress (2): 34/189 kB | 32/103 kBProgress (2): 35/189 kB | 32/103 kBProgress (2): 35/189 kB | 33/103 kBProgress (2): 36/189 kB | 33/103 kBProgress (2): 36/189 kB | 35/103 kBProgress (2): 38/189 kB | 35/103 kBProgress (2): 38/189 kB | 36/103 kBProgress (2): 39/189 kB | 36/103 kBProgress (2): 39/189 kB | 37/103 kBProgress (2): 41/189 kB | 37/103 kBProgress (2): 41/189 kB | 39/103 kBProgress (2): 41/189 kB | 40/103 kBProgress (2): 42/189 kB | 40/103 kBProgress (2): 42/189 kB | 42/103 kBProgress (2): 43/189 kB | 42/103 kBProgress (2): 43/189 kB | 43/103 kBProgress (2): 45/189 kB | 43/103 kBProgress (2): 46/189 kB | 43/103 kBProgress (2): 46/189 kB | 44/103 kBProgress (2): 47/189 kB | 44/103 kBProgress (2): 49/189 kB | 44/103 kBProgress (2): 49/189 kB | 46/103 kBProgress (2): 50/189 kB | 46/103 kBProgress (2): 52/189 kB | 46/103 kBProgress (2): 53/189 kB | 46/103 kBProgress (2): 53/189 kB | 46/103 kBProgress (2): 53/189 kB | 47/103 kBProgress (2): 55/189 kB | 47/103 kBProgress (2): 55/189 kB | 48/103 kBProgress (2): 55/189 kB | 50/103 kBProgress (2): 59/189 kB | 50/103 kBProgress (2): 59/189 kB | 51/103 kBProgress (2): 63/189 kB | 51/103 kBProgress (2): 63/189 kB | 52/103 kBProgress (2): 63/189 kB | 54/103 kBProgress (2): 63/189 kB | 55/103 kBProgress (2): 63/189 kB | 59/103 kBProgress (2): 67/189 kB | 59/103 kBProgress (2): 71/189 kB | 59/103 kBProgress (2): 76/189 kB | 59/103 kBProgress (2): 80/189 kB | 59/103 kBProgress (2): 84/189 kB | 59/103 kBProgress (2): 88/189 kB | 59/103 kBProgress (2): 93/189 kB | 59/103 kBProgress (2): 97/189 kB | 59/103 kBProgress (2): 101/189 kB | 59/103 kBProgress (2): 105/189 kB | 59/103 kBProgress (2): 109/189 kB | 59/103 kBProgress (2): 109/189 kB | 64/103 kBProgress (2): 109/189 kB | 68/103 kBProgress (2): 114/189 kB | 68/103 kBProgress (2): 114/189 kB | 72/103 kBProgress (2): 118/189 kB | 72/103 kBProgress (2): 118/189 kB | 76/103 kBProgress (2): 122/189 kB | 76/103 kBProgress (2): 122/189 kB | 81/103 kBProgress (2): 126/189 kB | 81/103 kBProgress (2): 126/189 kB | 85/103 kBProgress (2): 126/189 kB | 89/103 kBProgress (2): 126/189 kB | 93/103 kBProgress (2): 131/189 kB | 93/103 kBProgress (2): 131/189 kB | 97/103 kBProgress (2): 135/189 kB | 97/103 kBProgress (2): 135/189 kB | 102/103 kBProgress (2): 139/189 kB | 102/103 kBProgress (2): 139/189 kB | 103 kB    Progress (2): 143/189 kB | 103 kBProgress (2): 148/189 kB | 103 kBProgress (2): 152/189 kB | 103 kBProgress (2): 156/189 kB | 103 kBProgress (2): 160/189 kB | 103 kBProgress (2): 164/189 kB | 103 kBProgress (2): 169/189 kB | 103 kBProgress (2): 173/189 kB | 103 kBProgress (2): 177/189 kB | 103 kBProgress (2): 181/189 kB | 103 kBProgress (2): 184/189 kB | 103 kBProgress (2): 188/189 kB | 103 kBProgress (2): 189 kB | 103 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar (103 kB at 508 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar (189 kB at 923 kB/s)
+Progress (1): 0.9/7.7 kBProgress (1): 2.3/7.7 kBProgress (1): 3.6/7.7 kBProgress (1): 5.0/7.7 kBProgress (1): 6.4/7.7 kBProgress (1): 7.7 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar (7.7 kB at 36 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.1/junit-platform-launcher-1.10.1.pom
+Progress (1): 977 BProgress (1): 2.5 kBProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.1/junit-platform-launcher-1.10.1.pom (3.0 kB at 40 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.1/junit-platform-launcher-1.10.1.jar
+Progress (1): 0.9/184 kBProgress (1): 2.3/184 kBProgress (1): 3.6/184 kBProgress (1): 4.0/184 kBProgress (1): 5.4/184 kBProgress (1): 6.7/184 kBProgress (1): 8.1/184 kBProgress (1): 9.5/184 kBProgress (1): 11/184 kB Progress (1): 12/184 kBProgress (1): 14/184 kBProgress (1): 15/184 kBProgress (1): 16/184 kBProgress (1): 18/184 kBProgress (1): 19/184 kBProgress (1): 20/184 kBProgress (1): 22/184 kBProgress (1): 23/184 kBProgress (1): 25/184 kBProgress (1): 26/184 kBProgress (1): 27/184 kBProgress (1): 29/184 kBProgress (1): 30/184 kBProgress (1): 31/184 kBProgress (1): 33/184 kBProgress (1): 34/184 kBProgress (1): 35/184 kBProgress (1): 37/184 kBProgress (1): 38/184 kBProgress (1): 40/184 kBProgress (1): 41/184 kBProgress (1): 42/184 kBProgress (1): 47/184 kBProgress (1): 51/184 kBProgress (1): 55/184 kBProgress (1): 59/184 kBProgress (1): 63/184 kBProgress (1): 68/184 kBProgress (1): 72/184 kBProgress (1): 76/184 kBProgress (1): 80/184 kBProgress (1): 85/184 kBProgress (1): 89/184 kBProgress (1): 93/184 kBProgress (1): 97/184 kBProgress (1): 102/184 kBProgress (1): 106/184 kBProgress (1): 110/184 kBProgress (1): 114/184 kBProgress (1): 118/184 kBProgress (1): 123/184 kBProgress (1): 127/184 kBProgress (1): 131/184 kBProgress (1): 135/184 kBProgress (1): 139/184 kBProgress (1): 144/184 kBProgress (1): 148/184 kBProgress (1): 152/184 kBProgress (1): 156/184 kBProgress (1): 160/184 kBProgress (1): 165/184 kBProgress (1): 169/184 kBProgress (1): 173/184 kBProgress (1): 177/184 kBProgress (1): 182/184 kBProgress (1): 184 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.1/junit-platform-launcher-1.10.1.jar (184 kB at 1.7 MB/s)
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.wordmaps.controller.RouteControllerTest
+12:58:17.374 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.wordmaps.controller.RouteControllerTest]: RouteControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:58:17.502 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.wordmaps.WordMapsApplication for test class com.wordmaps.controller.RouteControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-12-15T12:58:17.853Z  INFO 16100 --- [           main] c.w.controller.RouteControllerTest       : Starting RouteControllerTest using Java 17.0.12 with PID 16100 (started by Juan López in D:\TSCD\proyectoTSCD\wordmaps-backend)
+2025-12-15T12:58:17.855Z  INFO 16100 --- [           main] c.w.controller.RouteControllerTest       : No active profile set, falling back to 1 default profile: "default"
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-12-15T12:58:20.337Z  INFO 16100 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-12-15T12:58:20.339Z  INFO 16100 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-12-15T12:58:20.345Z  INFO 16100 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-12-15T12:58:20.409Z  INFO 16100 --- [           main] c.w.controller.RouteControllerTest       : Started RouteControllerTest in 2.856 seconds (process running for 3.612)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.579 s -- in com.wordmaps.controller.RouteControllerTest
+[INFO] Running com.wordmaps.service.GraphServiceTest
+2025-12-15T12:58:20.826Z  INFO 16100 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.wordmaps.service.GraphServiceTest]: GraphServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-12-15T12:58:20.840Z  INFO 16100 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.wordmaps.WordMapsApplication for test class com.wordmaps.service.GraphServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-12-15T12:58:20.872Z  INFO 16100 --- [           main] com.wordmaps.service.GraphServiceTest    : Starting GraphServiceTest using Java 17.0.12 with PID 16100 (started by Juan López in D:\TSCD\proyectoTSCD\wordmaps-backend)
+2025-12-15T12:58:20.873Z  INFO 16100 --- [           main] com.wordmaps.service.GraphServiceTest    : No active profile set, falling back to 1 default profile: "default"
+2025-12-15T12:58:21.596Z  INFO 16100 --- [           main] o.s.c.f.web.mvc.FunctionHandlerMapping   : FunctionCatalog: org.springframework.cloud.function.context.catalog.BeanFactoryAwareFunctionRegistry@17b9c9ff
+2025-12-15T12:58:21.638Z  INFO 16100 --- [           main] com.wordmaps.service.GraphServiceTest    : Started GraphServiceTest in 0.784 seconds (process running for 4.84)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.856 s -- in com.wordmaps.service.GraphServiceTest
+[INFO] Running com.wordmaps.service.RouteFinderServiceTest
+[ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.136 s <<< FAILURE! -- in com.wordmaps.service.RouteFinderServiceTest
+[ERROR] com.wordmaps.service.RouteFinderServiceTest.testFindFastestRoute_Success -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <EASY> but was: <MEDIUM>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.wordmaps.service.RouteFinderServiceTest.testFindFastestRoute_Success(RouteFinderServiceTest.java:59)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   RouteFinderServiceTest.testFindFastestRoute_Success:59 expected: <EASY> but was: <MEDIUM>
+[INFO] 
+[ERROR] Tests run: 10, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.077 s
+[INFO] Finished at: 2025-12-15T12:58:21Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project wordmaps-backend: There are test failures.
+[ERROR] 
+[ERROR] Please refer to D:\TSCD\proyectoTSCD\wordmaps-backend\target\surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
