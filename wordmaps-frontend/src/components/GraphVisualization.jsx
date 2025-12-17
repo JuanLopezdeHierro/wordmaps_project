@@ -58,8 +58,8 @@ const GraphVisualization = ({ route }) => {
             .attr("stroke-width", 2);
 
         const node = g.append("g")
-            .attr("stroke", "#fff")
-            .attr("stroke-width", 3)
+            .attr("stroke", "#000000ff")
+            .attr("stroke-width", 0.5)
             .selectAll("g")
             .data(nodes)
             .join("g")
@@ -91,7 +91,7 @@ const GraphVisualization = ({ route }) => {
 
         function beginPath(d) {
             // White text on colored nodes, Dark text on white nodes
-            return (d.group === 1 || d.group === 2) ? "#ffffff" : "#0f172a";
+            return (d.group === 1 || d.group === 2) ? "#000000ff" : "#0f172a";
         }
 
         simulation.on("tick", () => {
