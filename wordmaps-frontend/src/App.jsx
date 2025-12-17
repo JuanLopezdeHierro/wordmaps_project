@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import RoutePanel from './components/RoutePanel';
 import GraphVisualization from './components/GraphVisualization';
+import GraphStats from './components/GraphStats';
+import WordExplorer from './components/WordExplorer';
 import { findRoute } from './services/api';
-import { Map } from 'lucide-react';
+import { Map, LayoutDashboard, Compass, GitMerge } from 'lucide-react';
 
 function App() {
+    const [activeTab, setActiveTab] = useState('routes');
     const [route, setRoute] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -31,36 +34,81 @@ function App() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-100 py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-            <div className="text-center mb-10">
-                <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-blue-600 rounded-full text-white">
-                        <Map size={40} />
+        <div className="min-h-screen text-gray-200 flex flex-col items-center">
+            {/* Header */}
+            <div className="w-full bg-dark-bg border-b border-neon-blue shadow-[0_0_15px_rgba(0,243,255,0.2)] mb-8">
+                <div className="max-w-4xl mx-auto py-6 px-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 border border-neon-blue rounded-lg text-neon-blue glow-box-blue">
+                            <Map size={24} />
+                        </div>
+                        <h1 className="text-3xl font-extrabold text-neon-blue tracking-wider glow-text-blue uppercase font-mono">
+                            WordMaps
+                        </h1>
                     </div>
+
+                    <nav className="flex gap-4">
+                        <button
+                            onClick={() => setActiveTab('routes')}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-md font-mono font-bold transition-all duration-300 border
+                        ${activeTab === 'routes'
+                                    ? 'bg-neon-blue/10 border-neon-blue text-neon-blue glow-box-blue'
+                                    : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'}`}
+                        >
+                            <GitMerge size={18} /> ROUTES
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('explorer')}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-md font-mono font-bold transition-all duration-300 border
+                        ${activeTab === 'explorer'
+                                    ? 'bg-neon-blue/10 border-neon-blue text-neon-blue glow-box-blue'
+                                    : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'}`}
+                        >
+                            <Compass size={18} /> EXPLORER
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('stats')}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-md font-mono font-bold transition-all duration-300 border
+                        ${activeTab === 'stats'
+                                    ? 'bg-neon-blue/10 border-neon-blue text-neon-blue glow-box-blue'
+                                    : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'}`}
+                        >
+                            <LayoutDashboard size={18} /> INSIGHTS
+                        </button>
+                    </nav>
                 </div>
-                <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-2">
-                    WordMaps
-                </h1>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Explore the connections between words. Find the shortest path from one word to another by changing one letter at a time.
-                </p>
             </div>
 
-            <SearchBar onSearch={handleSearch} isLoading={loading} />
+            {/* Content */}
+            <div className="w-full max-w-4xl px-4 pb-12">
+                {activeTab === 'routes' && (
+                    <div className="flex flex-col items-center animate-fadeIn">
+                        <div className="text-center mb-8">
+                            <h2 className="text-2xl font-bold text-neon-blue glow-text-blue mb-2 font-mono">SYSTEM: PATH_FINDER</h2>
+                            <p className="text-gray-400 font-mono text-sm tracking-widest">INITIATE CONNECTION SEQUENCE</p>
+                        </div>
+                        <SearchBar onSearch={handleSearch} isLoading={loading} />
+                        {error && (
+                            <div className="mt-6 p-4 bg-red-900/20 border border-red-500 text-red-400 w-full rounded font-mono glow-box-pink">
+                                <p className="font-bold flex items-center gap-2">
+                                    ERROR_DETECTED
+                                </p>
+                                <p>{error}</p>
+                            </div>
+                        )}
+                        {route && (
+                            <>
+                                <RoutePanel route={route} />
+                                <GraphVisualization route={route} />
+                            </>
+                        )}
+                    </div>
+                )}
 
-            {error && (
-                <div className="mt-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 w-full max-w-4xl rounded-r-md">
-                    <p className="font-bold">Error</p>
-                    <p>{error}</p>
-                </div>
-            )}
+                {activeTab === 'explorer' && <WordExplorer />}
 
-            {route && (
-                <>
-                    <RoutePanel route={route} />
-                    <GraphVisualization route={route} />
-                </>
-            )}
+                {activeTab === 'stats' && <GraphStats />}
+            </div>
         </div>
     );
 }

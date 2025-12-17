@@ -112,4 +112,20 @@ public class GraphService {
                 : wordGraph.getEdgeTarget(edge); // If target is source, return source (other end). Actually SimpleGraph
                                                  // is undirected.
     }
+
+    public List<String> getNeighbors(String word) {
+        String w = word.toUpperCase();
+        if (!wordGraph.containsVertex(w))
+            return Collections.emptyList();
+        return org.jgrapht.Graphs.neighborListOf(wordGraph, w);
+    }
+
+    public List<String> findWordsByPattern(String pattern) {
+        String regex = pattern.toUpperCase().replace("?", ".");
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(regex);
+        return wordGraph.vertexSet().stream()
+                .filter(v -> p.matcher(v).matches())
+                .limit(50)
+                .collect(java.util.stream.Collectors.toList());
+    }
 }

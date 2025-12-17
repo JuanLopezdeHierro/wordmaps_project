@@ -19,6 +19,17 @@ const GraphVisualization = ({ route }) => {
             .attr("viewBox", [0, 0, width, height])
             .attr("style", "max-width: 100%; height: auto;");
 
+        // Definitions for Glow Filters
+        const defs = svg.append("defs");
+        const filter = defs.append("filter")
+            .attr("id", "glow");
+        filter.append("feGaussianBlur")
+            .attr("stdDeviation", "2.5")
+            .attr("result", "coloredBlur");
+        const feMerge = filter.append("feMerge");
+        feMerge.append("feMergeNode").attr("in", "coloredBlur");
+        feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
         // Create nodes and links from route path
         const nodes = route.path.map((id, index) => ({
             id,
@@ -32,11 +43,11 @@ const GraphVisualization = ({ route }) => {
 
         const simulation = d3.forceSimulation(nodes)
             .force("link", d3.forceLink(links).id(d => d.id).distance(100))
-            .force("charge", d3.forceManyBody().strength(-400))
+            .force("charge", d3.forceManyBody().strength(-500))
             .force("center", d3.forceCenter(width / 2, height / 2));
 
         const link = svg.append("g")
-            .attr("stroke", "#999")
+            .attr("stroke", "#4b5563") // gray-600
             .attr("stroke-opacity", 0.6)
             .selectAll("line")
             .data(links)
@@ -44,25 +55,32 @@ const GraphVisualization = ({ route }) => {
             .attr("stroke-width", 2);
 
         const node = svg.append("g")
-            .attr("stroke", "#fff")
-            .attr("stroke-width", 1.5)
+            .attr("stroke", "#0a0b1e") // dark-bg
+            .attr("stroke-width", 2)
             .selectAll("g")
             .data(nodes)
-            .join("g");
+            .join("g")
+            .attr("cursor", "pointer");
 
+        // Node Circles with Glow
         node.append("circle")
-            .attr("r", 20)
-            .attr("fill", d => d.group === 1 ? "#16a34a" : d.group === 2 ? "#2563eb" : "#9ca3af");
+            .attr("r", 25)
+            .attr("fill", d => d.group === 1 ? "#00f3ff" : d.group === 2 ? "#bc13fe" : "#1f2937") // neon-blue, neon-pink, or dark-gray
+            .attr("stroke", d => d.group === 1 ? "#00f3ff" : d.group === 2 ? "#bc13fe" : "#00f3ff")
+            .attr("stroke-width", 2)
+            .style("filter", "url(#glow)");
 
+        // Text Labels
         node.append("text")
             .attr("x", 0)
-            .attr("y", 4)
+            .attr("y", 5)
             .text(d => d.id)
             .attr("text-anchor", "middle")
-            .style("font-size", "10px")
-            .style("fill", "white")
-            .style("font-family", "monospace")
-            .style("font-weight", "bold");
+            .style("font-size", "12px")
+            .style("fill", d => d.group === 0 ? "#00f3ff" : "#0a0b1e") // Cyan text on dark nodes, Dark text on colored nodes
+            .style("font-family", "'Courier New', monospace")
+            .style("font-weight", "bold")
+            .style("pointer-events", "none");
 
         simulation.on("tick", () => {
             link
@@ -95,7 +113,7 @@ const GraphVisualization = ({ route }) => {
     }, [route]);
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow-md mt-6 w-full max-w-4xl overflow-hidden flex justify-center">
+        <div className="tron-panel p-4 rounded-lg w-full max-w-4xl overflow-hidden flex justify-center mt-6 bg-dark-bg/90">
             <svg ref={svgRef}></svg>
         </div>
     );

@@ -61,4 +61,14 @@ public class RouteController {
     public ResponseEntity<Boolean> checkWord(@PathVariable String word) {
         return ResponseEntity.ok(graphService.wordExists(word));
     }
+
+    @GetMapping("/words/{word}/neighbors")
+    public ResponseEntity<List<String>> getNeighbors(@PathVariable String word) {
+        return ResponseEntity.ok(graphService.getNeighbors(word));
+    }
+
+    @GetMapping("/words/search")
+    public ResponseEntity<List<String>> searchWords(@RequestParam String pattern) {
+        return ResponseEntity.ok(graphService.findWordsByPattern(pattern));
+    }
 }
