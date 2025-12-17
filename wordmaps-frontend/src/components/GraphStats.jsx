@@ -31,7 +31,6 @@ const GraphStats = () => {
     if (loading) return <div className="p-6 text-center text-neon-blue font-mono animate-pulse">SYSTEM ANALYSIS IN PROGRESS...</div>;
 
     return (
-    return (
         <div className="tron-panel p-10 rounded-xl w-full mt-10 animate-fadeIn">
             <h2 className="text-3xl font-mono font-bold mb-10 flex items-center gap-4 text-neon-blue uppercase tracking-widest">
                 <BarChart size={32} /> System Metrics
