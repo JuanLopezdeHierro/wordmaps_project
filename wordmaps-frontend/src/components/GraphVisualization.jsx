@@ -10,14 +10,14 @@ const GraphVisualization = ({ route }) => {
         // Clear previous SVG
         d3.select(svgRef.current).selectAll("*").remove();
 
-        const width = 800;
-        const height = 400;
+        const width = 1200;
+        const height = 600;
 
         const svg = d3.select(svgRef.current)
             .attr("width", width)
             .attr("height", height)
             .attr("viewBox", [0, 0, width, height])
-            .attr("style", "max-width: 100%; height: auto;");
+            .attr("style", "max-width: 100%; height: auto; border-radius: 8px;");
 
         // Definitions for Glow Filters
         const defs = svg.append("defs");
@@ -113,7 +113,7 @@ const GraphVisualization = ({ route }) => {
     }, [route]);
 
     return (
-        <div className="tron-panel p-4 rounded-lg w-full max-w-4xl overflow-hidden flex justify-center mt-6 bg-dark-bg/90">
+        <div className="tron-panel p-8 rounded-xl w-full overflow-hidden flex justify-center mt-10 bg-dark-bg/90">
             <svg ref={svgRef}></svg>
         </div>
     );
