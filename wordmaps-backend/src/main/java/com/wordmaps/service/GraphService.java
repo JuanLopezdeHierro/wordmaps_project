@@ -47,12 +47,15 @@ public class GraphService {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
             String line;
+            int count = 0;
             while ((line = reader.readLine()) != null) {
                 String word = line.trim().toUpperCase();
                 if (!word.isEmpty()) {
                     wordGraph.addVertex(word);
+                    count++;
                 }
             }
+            System.out.println("Loaded " + count + " words from " + resourcePath);
         }
     }
 

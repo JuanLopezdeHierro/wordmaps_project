@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//WordMaps//AWS Cleanup//EN
+BEGIN:VEVENT
+UID:aws-cleanup-wordmaps-2026
+DTSTAMP:20251217T135500Z
+DTSTART:20260201T090000Z
+DTEND:20260201T100000Z
+SUMMARY:⚠️ WordMaps AWS Cleanup (Avoid Costs)
+DESCRIPTION:Reminder to delete WordMaps infrastructure to avoid AWS charges.\n\nActions:\n1. Run 'sam delete' or 'terraform destroy'.\n2. Check AWS Billing Dashboard.\n3. Verify S3 buckets and DynamoDB tables are deleted.
+BEGIN:VALARM
+TRIGGER:-PT24H
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Delete AWS WordMaps resources tomorrow
+END:VALARM
+END:VEVENT
+END:VCALENDAR

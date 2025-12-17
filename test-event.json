@@ -1,0 +1,12 @@
+{
+    "httpMethod": "GET",
+    "path": "/api/routes/fastest",
+    "queryStringParameters": {
+        "origin": "CAT",
+        "destination": "FAT"
+    },
+    "requestContext": {
+        "httpMethod": "GET",
+        "resourcePath": "/api/routes/fastest"
+    }
+}

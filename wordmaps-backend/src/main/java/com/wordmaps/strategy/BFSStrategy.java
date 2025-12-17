@@ -13,6 +13,7 @@ public class BFSStrategy implements PathFindingStrategy {
     @Override
     public List<String> findPath(Graph<String, DefaultEdge> graph, String origin, String destination) {
         BFSShortestPath<String, DefaultEdge> bfs = new BFSShortestPath<>(graph);
-        return bfs.getPath(origin, destination).getVertexList();
+        var path = bfs.getPath(origin, destination);
+        return path == null ? null : path.getVertexList();
     }
 }

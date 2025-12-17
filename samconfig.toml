@@ -1,0 +1,13 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "wordmaps"
+resolve_s3 = true
+s3_prefix = "wordmaps"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM CAPABILITY_AUTO_EXPAND"
+parameter_overrides = "LabRoleArn=\"arn:aws:iam::601661857294:role/LabRole\""
+image_repositories = []
+
+[default.global.parameters]
+region = "us-east-1"

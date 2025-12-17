@@ -28,7 +28,13 @@ public class RouteFinderService {
         String from = origin.toUpperCase();
         String to = destination.toUpperCase();
 
+        System.out.println("Finding path from " + from + " to " + to);
+        System.out.println("Graph info: V=" + graphService.getGraph().vertexSet().size() + ", E="
+                + graphService.getGraph().edgeSet().size());
+
         if (!graphService.wordExists(from) || !graphService.wordExists(to)) {
+            System.out.println("Word existence check failed: " + from + "=" + graphService.wordExists(from) + ", " + to
+                    + "=" + graphService.wordExists(to));
             throw new IllegalArgumentException("One or both words do not exist in the dictionary.");
         }
 
@@ -36,9 +42,12 @@ public class RouteFinderService {
             throw new IllegalArgumentException("Words must be of the same length.");
         }
 
+        System.out.println("Invoking strategy...");
         List<String> path = defaultStrategy.findPath(graphService.getGraph(), from, to);
+        System.out.println("Strategy returned: " + path);
 
         if (path == null) {
+            System.out.println("Path was null");
             return null; // or throw Exception
         }
 

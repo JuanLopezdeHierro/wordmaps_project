@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api';
+// Production API URL
+const API_URL = 'https://e23y9088lc.execute-api.us-east-1.amazonaws.com/api';
 
 export const findRoute = async (origin, destination) => {
     try {
