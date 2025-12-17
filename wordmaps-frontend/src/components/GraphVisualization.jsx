@@ -45,12 +45,12 @@ const GraphVisualization = ({ route }) => {
         }));
 
         const simulation = d3.forceSimulation(nodes)
-            .force("link", d3.forceLink(links).id(d => d.id).distance(120)) // Increased distance
-            .force("charge", d3.forceManyBody().strength(-800)) // Stronger repulsion for spacing
+            .force("link", d3.forceLink(links).id(d => d.id).distance(140)) // More spacing
+            .force("charge", d3.forceManyBody().strength(-1000))
             .force("center", d3.forceCenter(width / 2, height / 2));
 
         const link = g.append("g")
-            .attr("stroke", "#4b5563")
+            .attr("stroke", "#6b7280") // lighter gray
             .attr("stroke-opacity", 0.6)
             .selectAll("line")
             .data(links)
@@ -58,37 +58,35 @@ const GraphVisualization = ({ route }) => {
             .attr("stroke-width", 2);
 
         const node = g.append("g")
-            .attr("stroke", "#fff") // White stroke for better contrast
-            .attr("stroke-width", 2)
+            .attr("stroke-width", 3)
             .selectAll("g")
             .data(nodes)
             .join("g")
-            .attr("cursor", "pointer");
+            .attr("cursor", "pointer")
+            .attr("stroke", d => d.group === 1 ? "#00f3ff" : d.group === 2 ? "#bc13fe" : "#ffffff"); // Border color
 
-        // Node Circles with Glow
+        // Node Circles
         node.append("circle")
-            .attr("r", 30) // Larger nodes
+            .attr("r", 35) // Large nodes for readability
             .attr("fill", d => d.group === 1
                 ? "#00f3ff" // Origin: Neon Blue
                 : d.group === 2
                     ? "#bc13fe" // Dest: Neon Pink
-                    : "#1f2937") // Steps: Dark Gray (but lighter than bg)
-            .attr("stroke", d => d.group === 1 ? "#00f3ff" : d.group === 2 ? "#bc13fe" : "#ffffff") // White stroke for normal nodes
-            .attr("stroke-width", d => d.group === 0 ? 2 : 3)
+                    : "#f3f4f6") // Steps: Very Light Gray (Almost White)
             .style("filter", "url(#glow)");
 
-        // Text Labels
+        // Text Labels - HIGH CONTRAST
         node.append("text")
             .attr("x", 0)
             .attr("y", 5)
             .text(d => d.id)
             .attr("text-anchor", "middle")
-            .style("font-size", "14px") // Larger text
-            .style("fill", d => d.group === 0 ? "#ffffff" : "#0a0b1e") // White text on dark nodes, Dark on bright nodes
+            .style("font-size", "16px") // Larger text
+            .style("fill", "#000000") // ALWAYS BLACK TEXT for best contrast on bright/light nodes
             .style("font-family", "'Courier New', monospace")
             .style("font-weight", "900") // Extra bold
             .style("pointer-events", "none")
-            .style("text-shadow", "0px 0px 4px rgba(0,0,0,0.8)"); // Shadow for readability
+            .style("text-transform", "uppercase"); // Ensure readability
 
         simulation.on("tick", () => {
             link
@@ -130,8 +128,8 @@ const GraphVisualization = ({ route }) => {
     }, [route]);
 
     return (
-        <div className="tron-panel p-8 rounded-xl w-full overflow-hidden flex justify-center mt-10 bg-dark-bg/90 relative">
-            <div className="absolute top-4 right-4 text-neon-blue font-mono text-xs opacity-50 pointer-events-none">
+        <div className="tron-panel p-8 rounded-xl w-full overflow-hidden flex justify-center mt-10 bg-gray-900 relative border border-gray-700">
+            <div className="absolute top-4 right-4 text-gray-400 font-mono text-xs opacity-70 pointer-events-none">
                 PAN & ZOOM ENABLED [::]
             </div>
             <svg ref={svgRef}></svg>
