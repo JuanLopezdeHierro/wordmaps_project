@@ -3,56 +3,66 @@
 @tailwind utilities;
 
 :root {
-  --neon-blue: #00f3ff;
-  --neon-pink: #bc13fe;
-  --bg-dark: #0a0b1e;
-  --glass-bg: rgba(10, 11, 30, 0.7);
-  --glass-border: rgba(0, 243, 255, 0.2);
+  --bg-light: #fdfdfd;
+  --text-main: #0f172a;
+  --neon-blue: #0ea5e9;
+  /* Sky 500 - Visible on light */
+  --neon-pink: #d946ef;
+  /* Fuchsia 500 */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(14, 165, 233, 0.2);
 }
 
 body {
   margin: 0;
-  font-family: 'Courier New', Courier, monospace; /* Tech/Retro font */
-  background-color: var(--bg-dark);
-  color: #e0e0e0;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
-  background-image: 
-    linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar for Light Mode */
 ::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--neon-blue);
-  border-radius: 4px;
+  width: 10px;
 }
 
-/* Utilities for Glow Effects */
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-blue);
+}
+
+/* Glow Effects Adapted for Light Mode */
 .glow-text-blue {
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.7);
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
 }
+
 .glow-text-pink {
-  text-shadow: 0 0 10px rgba(188, 19, 254, 0.7);
+  text-shadow: 0 0 10px rgba(217, 70, 239, 0.3);
 }
+
 .glow-box-blue {
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 10px rgba(0, 243, 255, 0.1);
-  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.15);
 }
+
 .glow-box-pink {
-  box-shadow: 0 0 15px rgba(188, 19, 254, 0.2), inset 0 0 10px rgba(188, 19, 254, 0.1);
-  border: 1px solid var(--neon-pink);
+  box-shadow: 0 0 15px rgba(217, 70, 239, 0.15);
 }
 
 .tron-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
 }

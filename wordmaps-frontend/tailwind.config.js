@@ -7,12 +7,15 @@ export default {
     theme: {
         extend: {
             colors: {
-                'neon-blue': '#00f3ff',
-                'neon-pink': '#bc13fe',
-                'dark-bg': '#0a0b1e',
+                'neon-blue': '#0ea5e9', // Sky 500
+                'neon-pink': '#d946ef', // Fuchsia 500
+                'dark-bg': '#fdfdfd',   // Actually Light BG now
             },
             fontFamily: {
-                'mono': ['"Courier New"', 'Courier', 'monospace'],
+                mono: ['"Share Tech Mono"', 'monospace'],
+            },
+            animation: {
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             }
         },
     },

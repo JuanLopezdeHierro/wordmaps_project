@@ -34,16 +34,16 @@ function App() {
     };
 
     return (
-        <div className="min-h-screen text-gray-200 flex flex-col items-center">
+        <div className="min-h-screen text-gray-800 flex flex-col items-center bg-gray-50/50">
             {/* Header */}
-            <div className="w-full bg-dark-bg border-b border-neon-blue shadow-[0_0_15px_rgba(0,243,255,0.2)] mb-8">
-                <div className="max-w-[1600px] mx-auto py-8 px-8 flex items-center justify-between">
+            <div className="w-full bg-white/80 border-b border-gray-200 shadow-sm backdrop-blur-md mb-8">
+                <div className="max-w-[1600px] mx-auto py-6 px-8 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="p-3 border-2 border-neon-blue rounded-xl text-neon-blue glow-box-blue">
+                        <div className="p-3 border-2 border-neon-blue rounded-xl text-neon-blue bg-sky-50">
                             <Map size={32} />
                         </div>
-                        <h1 className="text-4xl font-extrabold text-neon-blue tracking-wider glow-text-blue uppercase font-mono">
-                            WordMaps
+                        <h1 className="text-4xl font-extrabold text-gray-900 tracking-wider uppercase font-mono flex items-center gap-2">
+                            Word<span className="text-neon-blue">Maps</span>
                         </h1>
                     </div>
 
@@ -52,8 +52,8 @@ function App() {
                             onClick={() => setActiveTab('routes')}
                             className={`flex items-center gap-3 px-6 py-3 rounded-lg font-mono font-bold text-lg transition-all duration-300 border-2
                         ${activeTab === 'routes'
-                                    ? 'bg-neon-blue/10 border-neon-blue text-neon-blue glow-box-blue'
-                                    : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'}`}
+                                    ? 'bg-neon-blue text-white border-neon-blue shadow-md'
+                                    : 'border-transparent text-gray-500 hover:text-neon-blue hover:bg-sky-50/50'}`}
                         >
                             <GitMerge size={24} /> ROUTES
                         </button>
@@ -61,8 +61,8 @@ function App() {
                             onClick={() => setActiveTab('explorer')}
                             className={`flex items-center gap-3 px-6 py-3 rounded-lg font-mono font-bold text-lg transition-all duration-300 border-2
                         ${activeTab === 'explorer'
-                                    ? 'bg-neon-blue/10 border-neon-blue text-neon-blue glow-box-blue'
-                                    : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'}`}
+                                    ? 'bg-neon-blue text-white border-neon-blue shadow-md'
+                                    : 'border-transparent text-gray-500 hover:text-neon-blue hover:bg-sky-50/50'}`}
                         >
                             <Compass size={24} /> EXPLORER
                         </button>
@@ -70,8 +70,8 @@ function App() {
                             onClick={() => setActiveTab('stats')}
                             className={`flex items-center gap-3 px-6 py-3 rounded-lg font-mono font-bold text-lg transition-all duration-300 border-2
                         ${activeTab === 'stats'
-                                    ? 'bg-neon-blue/10 border-neon-blue text-neon-blue glow-box-blue'
-                                    : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'}`}
+                                    ? 'bg-neon-blue text-white border-neon-blue shadow-md'
+                                    : 'border-transparent text-gray-500 hover:text-neon-blue hover:bg-sky-50/50'}`}
                         >
                             <LayoutDashboard size={24} /> INSIGHTS
                         </button>
@@ -84,16 +84,13 @@ function App() {
                 {activeTab === 'routes' && (
                     <div className="flex flex-col items-center animate-fadeIn w-full">
                         <div className="text-center mb-10">
-                            <h2 className="text-3xl font-bold text-neon-blue glow-text-blue mb-3 font-mono">SYSTEM: PATH_FINDER</h2>
-                            <p className="text-gray-400 font-mono text-base tracking-[0.2em]">INITIATE CONNECTION SEQUENCE</p>
+                            <h2 className="text-3xl font-bold text-gray-900 mb-3 font-mono">SYSTEM: PATH_FINDER</h2>
+                            <p className="text-gray-500 font-mono text-base tracking-[0.2em] uppercase">Connect phrases through semantic links</p>
                         </div>
                         <SearchBar onSearch={handleSearch} isLoading={loading} />
                         {error && (
-                            <div className="mt-8 p-6 bg-red-900/20 border-2 border-red-500 text-red-400 w-full rounded-lg font-mono glow-box-pink text-lg">
-                                <p className="font-bold flex items-center gap-3 mb-2">
-                                    ERROR_DETECTED
-                                </p>
-                                <p>{error}</p>
+                            <div className="mt-8 p-6 bg-red-50 border-l-4 border-red-500 text-red-700 w-full rounded shadow-sm font-mono text-lg flex items-center gap-4">
+                                <span className="font-bold">ERROR:</span> {error}
                             </div>
                         )}
                         {route && (

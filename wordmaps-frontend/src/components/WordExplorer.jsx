@@ -3,83 +3,122 @@ import { Network, HelpCircle } from 'lucide-react';
 import { getNeighbors, searchWords } from '../services/api';
 
 const WordExplorer = () => {
-    const [word, setWord] = useState('');
+    const [targetWord, setTargetWord] = useState('');
     const [pattern, setPattern] = useState('');
-    const [results, setResults] = useState([]);
-    const [mode, setMode] = useState('neighbors');
+    const [neighbors, setNeighbors] = useState(null); // Use null to indicate no search yet
+    const [matches, setMatches] = useState(null); // Use null to indicate no search yet
     const [loading, setLoading] = useState(false);
 
-    const handleSearch = async () => {
+    const handleNeighbors = async () => {
         setLoading(true);
-        setResults([]);
+        setNeighbors([]); // Clear previous results
         try {
-            if (mode === 'neighbors') {
-                const data = await getNeighbors(word);
-                setResults(data);
-            } else {
-                const data = await searchWords(pattern);
-                setResults(data);
-            }
+            const data = await getNeighbors(targetWord);
+            setNeighbors(data);
         } catch (error) {
-            console.error(error);
+            console.error("Error fetching neighbors:", error);
+            setNeighbors([]); // Set to empty array on error
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handlePattern = async () => {
+        setLoading(true);
+        setMatches([]); // Clear previous results
+        try {
+            const data = await searchWords(pattern);
+            setMatches(data);
+        } catch (error) {
+            console.error("Error searching pattern:", error);
+            setMatches([]); // Set to empty array on error
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="tron-panel p-10 rounded-xl w-full mt-10 animate-fadeIn">
-            <h2 className="text-3xl font-mono font-bold mb-10 flex items-center gap-4 text-neon-blue uppercase tracking-widest">
-                {mode === 'neighbors' ? <Network size={32} /> : <HelpCircle size={32} />}
-                Node Explorer Module
-            </h2>
-
-            <div className="flex gap-8 mb-10 border-b border-gray-800 pb-2">
-                <button
-                    className={`px-8 py-4 font-mono text-xl tracking-wider transition-all
-                        ${mode === 'neighbors' ? 'text-neon-blue border-b-4 border-neon-blue glow-text-blue' : 'text-gray-600 hover:text-gray-400'}`}
-                    onClick={() => { setMode('neighbors'); setResults([]); }}
-                >
-                    NEIGHBOR_SCAN
-                </button>
-                <button
-                    className={`px-8 py-4 font-mono text-xl tracking-wider transition-all
-                        ${mode === 'pattern' ? 'text-neon-blue border-b-4 border-neon-blue glow-text-blue' : 'text-gray-600 hover:text-gray-400'}`}
-                    onClick={() => { setMode('pattern'); setResults([]); }}
-                >
-                    PATTERN_MATCH
-                </button>
+        <div className="flex flex-col items-center animate-fadeIn w-full gap-8">
+            <div className="text-center mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 mb-3 font-mono">NODE INSPECTOR</h2>
+                <p className="text-gray-500 font-mono text-base tracking-[0.2em] uppercase">Analyze neighbors & patterns</p>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-6 mb-10">
-                <input
-                    type="text"
-                    value={mode === 'neighbors' ? word : pattern}
-                    onChange={(e) => mode === 'neighbors' ? setWord(e.target.value) : setPattern(e.target.value)}
-                    className="flex-1 px-8 py-5 bg-dark-bg/50 border-2 border-gray-700 rounded-lg text-neon-pink text-3xl font-mono uppercase tracking-widest focus:border-neon-pink focus:shadow-[0_0_15px_rgba(188,19,254,0.3)] outline-none"
-                    placeholder={mode === 'neighbors' ? "INPUT ROOT NODE..." : "INPUT PATTERN (C?T)..."}
-                />
-                <button
-                    onClick={handleSearch}
-                    disabled={loading}
-                    className="px-12 py-5 bg-gray-800 border-2 border-gray-600 hover:border-neon-blue hover:text-neon-blue hover:shadow-[0_0_20px_rgba(0,243,255,0.2)] text-white text-xl font-mono uppercase tracking-widest rounded-lg transition-all disabled:opacity-50"
-                >
-                    {loading ? 'PROCESSING...' : 'INITIATE'}
-                </button>
-            </div>
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Neighbor Scan */}
+                <div className="bg-white/60 p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all">
+                    <h3 className="font-bold text-gray-800 font-mono text-xl uppercase mb-6 flex items-center gap-3">
+                        NEIGHBOR_SCAN
+                    </h3>
+                    <div className="flex gap-4 mb-6">
+                        <input
+                            type="text"
+                            value={targetWord}
+                            onChange={(e) => setTargetWord(e.target.value)}
+                            className="flex-1 px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-800 font-mono uppercase focus:border-neon-blue focus:shadow shadow-sm outline-none transition-all"
+                            placeholder="TARGET NODE..."
+                            maxLength={5}
+                        />
+                        <button
+                            onClick={handleNeighbors}
+                            disabled={loading || !targetWord}
+                            className="px-6 py-3 bg-neon-blue text-white rounded-lg font-mono font-bold hover:bg-sky-600 disabled:bg-gray-200 disabled:text-gray-400 transition-colors shadow-sm"
+                        >
+                            SCAN
+                        </button>
+                    </div>
 
-            <div className="mt-8 p-8 bg-dark-bg border-2 border-gray-800 rounded-xl min-h-[150px]">
-                <h3 className="text-sm font-mono text-gray-500 uppercase mb-6 flex justify-between">
-                    <span>Output Log</span>
-                    <span>Count: {results.length}</span>
-                </h3>
-                <div className="flex flex-wrap gap-4">
-                    {results.map((w, i) => (
-                        <span key={i} className="px-6 py-3 bg-neon-blue/10 border border-neon-blue/30 text-neon-blue rounded-lg text-lg font-mono hover:bg-neon-blue hover:text-black cursor-default transition-colors">
-                            {w}
-                        </span>
-                    ))}
-                    {results.length === 0 && !loading && <span className="text-gray-600 font-mono text-lg">NO DATA DETECTED.</span>}
+                    {neighbors !== null && ( // Only show if a search has been performed
+                        <div className="mt-4">
+                            <h4 className="text-sm font-mono text-gray-400 mb-3 uppercase">Direct Connections ({neighbors.length})</h4>
+                            <div className="flex flex-wrap gap-2 max-h-[300px] overflow-y-auto custom-scrollbar p-1">
+                                {neighbors.map((w, i) => (
+                                    <span key={i} className="px-3 py-1 bg-sky-50 text-sky-700 border border-sky-100 rounded-md font-mono text-sm hover:bg-sky-100 transition-colors cursor-default">
+                                        {w}
+                                    </span>
+                                ))}
+                                {neighbors.length === 0 && <span className="text-gray-400 font-mono italic">NO CONNECTIONS FOUND</span>}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Pattern Match */}
+                <div className="bg-white/60 p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all">
+                    <h3 className="font-bold text-gray-800 font-mono text-xl uppercase mb-6 flex items-center gap-3">
+                        PATTERN_MATCH
+                    </h3>
+                    <div className="flex gap-4 mb-6">
+                        <input
+                            type="text"
+                            value={pattern}
+                            onChange={(e) => setPattern(e.target.value)}
+                            className="flex-1 px-4 py-3 bg-white border border-gray-200 rounded-lg text-gray-800 font-mono uppercase focus:border-neon-pink focus:shadow shadow-sm outline-none transition-all"
+                            placeholder="Use '?' for wildcards (e.g. B??K)"
+                            maxLength={5}
+                        />
+                        <button
+                            onClick={handlePattern}
+                            disabled={loading || !pattern}
+                            className="px-6 py-3 bg-neon-pink text-white rounded-lg font-mono font-bold hover:bg-fuchsia-600 disabled:bg-gray-200 disabled:text-gray-400 transition-colors shadow-sm"
+                        >
+                            MATCH
+                        </button>
+                    </div>
+
+                    {matches !== null && ( // Only show if a search has been performed
+                        <div className="mt-4">
+                            <h4 className="text-sm font-mono text-gray-400 mb-3 uppercase">Matches Found ({matches.length})</h4>
+                            <div className="flex flex-wrap gap-2 max-h-[300px] overflow-y-auto custom-scrollbar p-1">
+                                {matches.map((w, i) => (
+                                    <span key={i} className="px-3 py-1 bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-100 rounded-md font-mono text-sm hover:bg-fuchsia-100 transition-colors cursor-default">
+                                        {w}
+                                    </span>
+                                ))}
+                                {matches.length === 0 && <span className="text-gray-400 font-mono italic">NO MATCHES IDENTIFIED</span>}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

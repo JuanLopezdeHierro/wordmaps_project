@@ -17,9 +17,9 @@ const GraphVisualization = ({ route }) => {
             .attr("width", width)
             .attr("height", height)
             .attr("viewBox", [0, 0, width, height])
-            .attr("style", "max-width: 100%; height: auto; border-radius: 8px; cursor: move;");
+            .attr("style", "max-width: 100%; height: auto; border-radius: 8px;");
 
-        // Definitions for Glow Filters
+        // Definitions for Glow Filters (Subtler for light mode)
         const defs = svg.append("defs");
         const filter = defs.append("filter")
             .attr("id", "glow");
@@ -45,48 +45,54 @@ const GraphVisualization = ({ route }) => {
         }));
 
         const simulation = d3.forceSimulation(nodes)
-            .force("link", d3.forceLink(links).id(d => d.id).distance(140)) // More spacing
-            .force("charge", d3.forceManyBody().strength(-1000))
+            .force("link", d3.forceLink(links).id(d => d.id).distance(120))
+            .force("charge", d3.forceManyBody().strength(-800))
             .force("center", d3.forceCenter(width / 2, height / 2));
 
         const link = g.append("g")
-            .attr("stroke", "#6b7280") // lighter gray
-            .attr("stroke-opacity", 0.6)
+            .attr("stroke", "#cbd5e1") // Slate-300 (Light Gray)
+            .attr("stroke-opacity", 0.8)
             .selectAll("line")
             .data(links)
             .join("line")
             .attr("stroke-width", 2);
 
         const node = g.append("g")
+            .attr("stroke", "#fff")
             .attr("stroke-width", 3)
             .selectAll("g")
             .data(nodes)
             .join("g")
-            .attr("cursor", "pointer")
-            .attr("stroke", d => d.group === 1 ? "#00f3ff" : d.group === 2 ? "#bc13fe" : "#ffffff"); // Border color
+            .attr("cursor", "pointer");
 
         // Node Circles
         node.append("circle")
-            .attr("r", 35) // Large nodes for readability
+            .attr("r", 32)
             .attr("fill", d => d.group === 1
-                ? "#00f3ff" // Origin: Neon Blue
+                ? "#0ea5e9" // Neon Blue (Sky 500)
                 : d.group === 2
-                    ? "#bc13fe" // Dest: Neon Pink
-                    : "#f3f4f6") // Steps: Very Light Gray (Almost White)
-            .style("filter", "url(#glow)");
+                    ? "#d946ef" // Neon Pink (Fuchsia 500)
+                    : "#ffffff") // White for steps
+            .attr("stroke", d => d.group === 1 ? "#38bdf8" : d.group === 2 ? "#e879f9" : "#94a3b8") // Lighter borders or Slate-400
+            .attr("stroke-width", d => d.group === 0 ? 2 : 0)
+            .style("filter", d => d.group !== 0 ? "url(#glow)" : "none");
 
-        // Text Labels - HIGH CONTRAST
+        // Text Labels
         node.append("text")
             .attr("x", 0)
             .attr("y", 5)
             .text(d => d.id)
             .attr("text-anchor", "middle")
-            .style("font-size", "16px") // Larger text
-            .style("fill", "#000000") // ALWAYS BLACK TEXT for best contrast on bright/light nodes
-            .style("font-family", "'Courier New', monospace")
-            .style("font-weight", "900") // Extra bold
-            .style("pointer-events", "none")
-            .style("text-transform", "uppercase"); // Ensure readability
+            .style("font-size", "14px")
+            .style("fill", d => beginPath(d))
+            .style("font-family", "'Share Tech Mono', monospace")
+            .style("font-weight", "bold")
+            .style("pointer-events", "none");
+
+        function beginPath(d) {
+            // White text on colored nodes, Dark text on white nodes
+            return (d.group === 1 || d.group === 2) ? "#ffffff" : "#0f172a";
+        }
 
         simulation.on("tick", () => {
             link
@@ -128,9 +134,9 @@ const GraphVisualization = ({ route }) => {
     }, [route]);
 
     return (
-        <div className="tron-panel p-8 rounded-xl w-full overflow-hidden flex justify-center mt-10 bg-gray-900 relative border border-gray-700">
-            <div className="absolute top-4 right-4 text-gray-400 font-mono text-xs opacity-70 pointer-events-none">
-                PAN & ZOOM ENABLED [::]
+        <div className="tron-panel p-4 rounded-xl w-full overflow-hidden flex justify-center mt-10 bg-white/50 border border-gray-200 shadow-sm relative">
+            <div className="absolute top-4 right-4 text-gray-400 font-mono text-xs opacity-70 pointer-events-none flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-400"></span> LIVE
             </div>
             <svg ref={svgRef}></svg>
         </div>
