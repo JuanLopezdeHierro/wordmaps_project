@@ -30,7 +30,7 @@ public class RouteController {
     }
 
     @GetMapping("/routes/fastest")
-    public ResponseEntity<Route> getFastestRoute(@RequestParam String origin,
+    public ResponseEntity<?> getFastestRoute(@RequestParam String origin,
             @RequestParam String destination) {
         try {
             Route route = routeFinderService.findFastestRoute(origin, destination);
@@ -38,7 +38,7 @@ public class RouteController {
                 return ResponseEntity.notFound().build();
             return ResponseEntity.ok(route);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         }
     }
 

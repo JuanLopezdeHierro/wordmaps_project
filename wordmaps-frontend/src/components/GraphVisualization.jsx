@@ -17,7 +17,7 @@ const GraphVisualization = ({ route }) => {
             .attr("width", width)
             .attr("height", height)
             .attr("viewBox", [0, 0, width, height])
-            .attr("style", "max-width: 100%; height: auto; border-radius: 8px;");
+            .attr("style", "max-width: 100%; height: auto; border-radius: 8px; cursor: move;");
 
         // Definitions for Glow Filters
         const defs = svg.append("defs");
@@ -29,6 +29,9 @@ const GraphVisualization = ({ route }) => {
         const feMerge = filter.append("feMerge");
         feMerge.append("feMergeNode").attr("in", "coloredBlur");
         feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+        // Create a wrapper group for zoom
+        const g = svg.append("g");
 
         // Create nodes and links from route path
         const nodes = route.path.map((id, index) => ({
@@ -42,20 +45,20 @@ const GraphVisualization = ({ route }) => {
         }));
 
         const simulation = d3.forceSimulation(nodes)
-            .force("link", d3.forceLink(links).id(d => d.id).distance(100))
-            .force("charge", d3.forceManyBody().strength(-500))
+            .force("link", d3.forceLink(links).id(d => d.id).distance(120)) // Increased distance
+            .force("charge", d3.forceManyBody().strength(-800)) // Stronger repulsion for spacing
             .force("center", d3.forceCenter(width / 2, height / 2));
 
-        const link = svg.append("g")
-            .attr("stroke", "#4b5563") // gray-600
+        const link = g.append("g")
+            .attr("stroke", "#4b5563")
             .attr("stroke-opacity", 0.6)
             .selectAll("line")
             .data(links)
             .join("line")
             .attr("stroke-width", 2);
 
-        const node = svg.append("g")
-            .attr("stroke", "#0a0b1e") // dark-bg
+        const node = g.append("g")
+            .attr("stroke", "#fff") // White stroke for better contrast
             .attr("stroke-width", 2)
             .selectAll("g")
             .data(nodes)
@@ -64,10 +67,14 @@ const GraphVisualization = ({ route }) => {
 
         // Node Circles with Glow
         node.append("circle")
-            .attr("r", 25)
-            .attr("fill", d => d.group === 1 ? "#00f3ff" : d.group === 2 ? "#bc13fe" : "#1f2937") // neon-blue, neon-pink, or dark-gray
-            .attr("stroke", d => d.group === 1 ? "#00f3ff" : d.group === 2 ? "#bc13fe" : "#00f3ff")
-            .attr("stroke-width", 2)
+            .attr("r", 30) // Larger nodes
+            .attr("fill", d => d.group === 1
+                ? "#00f3ff" // Origin: Neon Blue
+                : d.group === 2
+                    ? "#bc13fe" // Dest: Neon Pink
+                    : "#1f2937") // Steps: Dark Gray (but lighter than bg)
+            .attr("stroke", d => d.group === 1 ? "#00f3ff" : d.group === 2 ? "#bc13fe" : "#ffffff") // White stroke for normal nodes
+            .attr("stroke-width", d => d.group === 0 ? 2 : 3)
             .style("filter", "url(#glow)");
 
         // Text Labels
@@ -76,11 +83,12 @@ const GraphVisualization = ({ route }) => {
             .attr("y", 5)
             .text(d => d.id)
             .attr("text-anchor", "middle")
-            .style("font-size", "12px")
-            .style("fill", d => d.group === 0 ? "#00f3ff" : "#0a0b1e") // Cyan text on dark nodes, Dark text on colored nodes
+            .style("font-size", "14px") // Larger text
+            .style("fill", d => d.group === 0 ? "#ffffff" : "#0a0b1e") // White text on dark nodes, Dark on bright nodes
             .style("font-family", "'Courier New', monospace")
-            .style("font-weight", "bold")
-            .style("pointer-events", "none");
+            .style("font-weight", "900") // Extra bold
+            .style("pointer-events", "none")
+            .style("text-shadow", "0px 0px 4px rgba(0,0,0,0.8)"); // Shadow for readability
 
         simulation.on("tick", () => {
             link
@@ -92,6 +100,15 @@ const GraphVisualization = ({ route }) => {
             node
                 .attr("transform", d => `translate(${d.x},${d.y})`);
         });
+
+        // Add Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
 
         // Add drag behavior
         node.call(d3.drag()
@@ -113,7 +130,10 @@ const GraphVisualization = ({ route }) => {
     }, [route]);
 
     return (
-        <div className="tron-panel p-8 rounded-xl w-full overflow-hidden flex justify-center mt-10 bg-dark-bg/90">
+        <div className="tron-panel p-8 rounded-xl w-full overflow-hidden flex justify-center mt-10 bg-dark-bg/90 relative">
+            <div className="absolute top-4 right-4 text-neon-blue font-mono text-xs opacity-50 pointer-events-none">
+                PAN & ZOOM ENABLED [::]
+            </div>
             <svg ref={svgRef}></svg>
         </div>
     );
