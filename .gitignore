@@ -1,0 +1,45 @@
+# AWS SAM
+.aws-sam/
+samconfig.toml.bak
+
+# Backend (Java/Maven)
+wordmaps-backend/target/
+wordmaps-backend/*.log
+wordmaps-backend/.classpath
+wordmaps-backend/.project
+wordmaps-backend/.settings/
+wordmaps-backend/build/
+*.class
+
+# Frontend (Node/React)
+wordmaps-frontend/node_modules/
+wordmaps-frontend/dist/
+wordmaps-frontend/.cache/
+wordmaps-frontend/*.log
+wordmaps-frontend/.env.local
+wordmaps-frontend/.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+lambda-logs.txt
+response.json
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build artifacts
+*.zip
+*.tar.gz
+
+# Test files (keep test-event.json in scripts)
+test-event.json
