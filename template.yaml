@@ -1,0 +1,98 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  WordMaps - Serverless Backend with Spring Boot 3
+  
+Globals:
+  Function:
+    Timeout: 60
+    MemorySize: 3072
+    Runtime: java17
+    Architectures:
+      - x86_64
+    Environment:
+      Variables:
+        JAVA_TOOL_OPTIONS: "-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+        FORCE_DEPLOY: "true"
+
+  HttpApi:
+    CorsConfiguration:
+      AllowMethods:
+        - GET
+        - POST
+        - OPTIONS
+      AllowHeaders:
+        - "*"
+      AllowOrigins:
+        - "*"
+
+Resources:
+  WordMapsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: wordmaps-backend/
+      Handler: com.wordmaps.config.LambdaHandler::handleRequest
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Events:
+        ApiEvents:
+          Type: HttpApi
+          Properties:
+            PayloadFormatVersion: "2.0"
+            Path: /{proxy+}
+            Method: ANY
+
+  # --- Frontend Infrastructure ---
+  FrontendBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: index.html
+
+  CloudFrontOAI:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: "OAI for WordMaps Frontend"
+
+  FrontendDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        DefaultRootObject: index.html
+        Origins:
+          - Id: S3Origin
+            DomainName: !GetAtt FrontendBucket.DomainName
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOAI}"
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: [GET, HEAD, OPTIONS]
+          CachedMethods: [GET, HEAD]
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+
+  FrontendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref FrontendBucket
+      PolicyDocument:
+        Statement:
+          - Action: s3:GetObject
+            Effect: Allow
+            Resource: !Sub "arn:aws:s3:::${FrontendBucket}/*"
+            Principal:
+              CanonicalUser: !GetAtt CloudFrontOAI.S3CanonicalUserId
+
+Outputs:
+  WordMapsApi:
+    Description: "API Gateway endpoint URL for WordMaps"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/"
+  FrontendUrl:
+    Description: "CloudFront URL for the specific version"
+    Value: !GetAtt FrontendDistribution.DomainName

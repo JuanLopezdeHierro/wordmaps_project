@@ -1,0 +1,76 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.wordmaps:wordmaps-backend >--------------------
+[INFO] Building wordmaps-backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ wordmaps-backend ---
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ wordmaps-backend ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ wordmaps-backend ---
+[INFO] skip non existing resourceDirectory D:\TSCD\proyectoTSCD\wordmaps-backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ wordmaps-backend ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ wordmaps-backend ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.wordmaps.controller.RouteControllerTest
+13:00:12.090 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.wordmaps.controller.RouteControllerTest]: RouteControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:00:12.201 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.wordmaps.WordMapsApplication for test class com.wordmaps.controller.RouteControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-12-15T13:00:12.513Z  INFO 3892 --- [           main] c.w.controller.RouteControllerTest       : Starting RouteControllerTest using Java 17.0.12 with PID 3892 (started by Juan López in D:\TSCD\proyectoTSCD\wordmaps-backend)
+2025-12-15T13:00:12.515Z  INFO 3892 --- [           main] c.w.controller.RouteControllerTest       : No active profile set, falling back to 1 default profile: "default"
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-12-15T13:00:14.934Z  INFO 3892 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-12-15T13:00:14.935Z  INFO 3892 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-12-15T13:00:14.940Z  INFO 3892 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-12-15T13:00:14.999Z  INFO 3892 --- [           main] c.w.controller.RouteControllerTest       : Started RouteControllerTest in 2.727 seconds (process running for 3.521)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.530 s -- in com.wordmaps.controller.RouteControllerTest
+[INFO] Running com.wordmaps.service.GraphServiceTest
+2025-12-15T13:00:15.472Z  INFO 3892 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.wordmaps.service.GraphServiceTest]: GraphServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-12-15T13:00:15.488Z  INFO 3892 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.wordmaps.WordMapsApplication for test class com.wordmaps.service.GraphServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-12-15T13:00:15.518Z  INFO 3892 --- [           main] com.wordmaps.service.GraphServiceTest    : Starting GraphServiceTest using Java 17.0.12 with PID 3892 (started by Juan López in D:\TSCD\proyectoTSCD\wordmaps-backend)
+2025-12-15T13:00:15.518Z  INFO 3892 --- [           main] com.wordmaps.service.GraphServiceTest    : No active profile set, falling back to 1 default profile: "default"
+2025-12-15T13:00:16.342Z  INFO 3892 --- [           main] o.s.c.f.web.mvc.FunctionHandlerMapping   : FunctionCatalog: org.springframework.cloud.function.context.catalog.BeanFactoryAwareFunctionRegistry@1a598e30
+2025-12-15T13:00:16.357Z  INFO 3892 --- [           main] com.wordmaps.service.GraphServiceTest    : Started GraphServiceTest in 0.855 seconds (process running for 4.879)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.938 s -- in com.wordmaps.service.GraphServiceTest
+[INFO] Running com.wordmaps.service.RouteFinderServiceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.195 s -- in com.wordmaps.service.RouteFinderServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.969 s
+[INFO] Finished at: 2025-12-15T13:00:16Z
+[INFO] ------------------------------------------------------------------------
