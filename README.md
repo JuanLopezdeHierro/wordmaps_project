@@ -1,6 +1,6 @@
 # WordMaps
 
-A serverless web application for exploring a graph of 3-letter English words, finding optimal paths between words that differ by a single letter.
+A serverless web application for exploring a graph of 3,4 and 5-letter English words, finding optimal paths between words that differ by a single letter.
 
 ## Overview
 
