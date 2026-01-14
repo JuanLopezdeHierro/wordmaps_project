@@ -4,7 +4,7 @@ A serverless web application for exploring a graph of 3-letter English words, fi
 
 ## Overview
 
-WordMaps implements a graph-based word transformation system where each node represents a valid 3-letter English word, and edges connect words that differ by exactly one character. The application uses breadth-first search to find the shortest path between any two words.
+WordMaps implements a graph-based word transformation system where each node represents a valid 3, 4 and 5-letter English word, and edges connect words that differ by exactly one character. The application uses breadth-first search to find the shortest path between any two words.
 
 **Live Demo:** https://d2euump6bzpha5.cloudfront.net
 
