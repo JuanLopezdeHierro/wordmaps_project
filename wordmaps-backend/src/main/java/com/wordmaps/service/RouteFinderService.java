@@ -28,10 +28,6 @@ public class RouteFinderService {
         String from = origin.toUpperCase();
         String to = destination.toUpperCase();
 
-        System.out.println("Finding path from " + from + " to " + to);
-        System.out.println("Graph info: V=" + graphService.getGraph().vertexSet().size() + ", E="
-                + graphService.getGraph().edgeSet().size());
-
         if (!graphService.wordExists(from) || !graphService.wordExists(to)) {
             System.out.println("Word existence check failed: " + from + "=" + graphService.wordExists(from) + ", " + to
                     + "=" + graphService.wordExists(to));
@@ -40,6 +36,12 @@ public class RouteFinderService {
 
         if (from.length() != to.length()) {
             throw new IllegalArgumentException("Words must be of the same length.");
+        }
+
+        System.out.println("Finding path from " + from + " to " + to);
+        if (graphService.getGraph() != null) {
+            System.out.println("Graph info: V=" + graphService.getGraph().vertexSet().size() + ", E="
+                    + graphService.getGraph().edgeSet().size());
         }
 
         System.out.println("Invoking strategy...");
