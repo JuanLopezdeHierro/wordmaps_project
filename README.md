@@ -10,7 +10,7 @@ WordMaps implements a graph-based word transformation system where each node rep
 
 ## Documentation
 
-For a comprehensive technical report covering architecture, implementation details, deployment process, and performance analysis, see [Technical Report PDF](docs/wordmaps-technical-report.pdf).
+For a comprehensive technical report covering architecture, implementation details, deployment process, and performance analysis, see [Technical Report PDF](WordMaps_Technical_Report.pdf).
 
 ## Architecture
 
